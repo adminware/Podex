@@ -1,0 +1,41 @@
+{
+	"name": "podex",
+	"version": "0.1.1",
+	"description": "Podex - PowerShell/Pode + htmx Framework for Building Web Applications",
+	"author": "Phillip Beazley",
+	"license": "MIT",
+	"main": "./podex.ps1",
+	"keywords": [
+		"powershell",
+		"pode",
+		"htmx",
+		"tailwind",
+		"mustache",
+		"sqlite"
+	],
+	"scripts": {
+		"format": "prettier --write \"./views/**/*.*\" \"./api/**/*.*\" \"./htmx/**/*.*\" \"./errors/**/*.*\"",
+		"lint": "eslint .",
+		"analyze": "Invoke-ScriptAnalyzer -Path ./ -Recurse",
+		"test": "Invoke-Pester -Path ./tests/*.ps1",
+		"css": "tailwindcss -c ./tailwind.config.mjs -i ./public/css/tailwind.css -o ./public/css/output.css --minify",
+		"build": "powershell ./.build.ps1",
+		"start": "powershell ./podex.ps1"
+	},
+	"dependencies": {
+		"htmx-ext-client-side-templates": "^2.0.0",
+		"htmx-ext-debug": "^2.0.0",
+		"htmx-ext-json-enc": "^2.0.1",
+		"htmx.org": "^2.0.2",
+		"mustache": "^4.2.0",
+		"tailwindcss": "^3.4.13"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.11.1",
+		"eslint": "^9.11.1",
+		"globals": "^15.9.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-sql": "^0.18.1",
+		"prettier-plugin-tailwindcss": "^0.6.8"
+	}
+}

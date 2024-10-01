@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="404 Not Found" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content="PowerShell $($PSVersionTable.'PSEdition' ;) $([string]$PSVersionTable.'PSVersion' ;)" />
+		<title>404 Not Found</title>
+		<link rel="stylesheet" type="text/css" href="/public/css/output.css" />
+		<link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg" />
+		<script src="/public/js/htmx.min.js"></script>
+		<script src="/public/js/client-side-templates.js"></script>
+		<script src="/public/js/json-enc.js"></script>
+		<script src="/public/js/mustache.min.js"></script>
+	</head>
+	<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200" hx-boost="true">
+		$(Use-PodePartialView -Path 'partials/header' -Data @{ PageName = '404 Not Found' } ;)
+
+		<main class="container mx-auto max-w-screen-xl p-2 lg:px-3 lg:py-4">
+			<h1>404 Not Found</h1>
+			<div class="bg-white text-left text-sm text-black">
+				<p>Render Time: $([DateTime]::Now.ToString('yyyy-MM-dd HH:mm:ss') ;)</p>
+				<p>Data: $($data | ConvertTo-Json ;)</p>
+			</div>
+		</main>
+
+		$(Use-PodePartialView -Path 'partials/footer' ;)
+	</body>
+</html>

@@ -1,0 +1,6 @@
+<footer class="mx-auto max-w-screen-xl bg-gradient-to-r from-gray-700 to-gray-900 p-4 dark:bg-gray-800 md:p-6 lg:p-4">
+	<div class="mx-auto max-w-screen-xl text-center">
+		<p class="text-gray-300 dark:text-gray-400">Stuff happens around here and you can't make us stop.</p>
+		<span class="text-sm text-gray-300 dark:text-gray-400 sm:text-center"> <a href="#" class="text-yellow-400 hover:underline">adminware, llc</a> © 2024 </span>
+	</div>
+</footer>

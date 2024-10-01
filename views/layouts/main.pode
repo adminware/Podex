@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Podex - PowerShell/Pode + htmx Framework for Building Web Applications" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content="Podex 0.1.1 using PowerShell $($PSVersionTable.'PSEdition' ;) $([string]$PSVersionTable.'PSVersion' ;)" />
+		<title>Podex - $($data.Title ;)</title>
+		<link rel="stylesheet" type="text/css" href="/public/css/output.css" />
+		<link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg" />
+		<script src="/public/js/htmx.min.js"></script>
+		<script src="/public/js/client-side-templates.js"></script>
+		<script src="/public/js/json-enc.js"></script>
+		<script src="/public/js/mustache.min.js"></script>
+	</head>
+	<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200" hx-boost="true">
+		$(Use-PodePartialView -Path 'partials/header' -Data @{ PageName = $data.PageName } ;)
+
+		<main class="mx-auto max-w-screen-lg p-6">
+			<article class="prose lg:prose-xl dark:prose-dark">$(foreach($component in $data.Components) { Use-PodePartialView -Path "components/$component" } ;)</article>
+		</main>
+
+		$(Use-PodePartialView -Path 'partials/footer' ;)
+	</body>
+</html>

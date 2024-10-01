@@ -1,0 +1,1 @@
+$(foreach($component in $data.Components) { Use-PodePartialView -Path "components/$component" } ;)
