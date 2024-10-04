@@ -1,6 +1,6 @@
 {
 	"name": "podex",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Podex - PowerShell/Pode + htmx Framework for Building Web Applications",
 	"author": "Phillip Beazley",
 	"license": "MIT",
@@ -14,13 +14,13 @@
 		"sqlite"
 	],
 	"scripts": {
-		"format": "prettier --write \"./views/**/*.*\" \"./api/**/*.*\" \"./htmx/**/*.*\" \"./errors/**/*.*\"",
+		"format": "prettier --write .",
 		"lint": "eslint .",
-		"analyze": "Invoke-ScriptAnalyzer -Path ./ -Recurse",
-		"test": "Invoke-Pester -Path ./tests/*.ps1",
 		"css": "tailwindcss -c ./tailwind.config.mjs -i ./public/css/tailwind.css -o ./public/css/output.css --minify",
-		"build": "powershell ./.build.ps1",
-		"start": "powershell ./podex.ps1"
+		"analyze": "pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"Import-Module PSScriptAnalyzer ; Invoke-ScriptAnalyzer -Path ./\"",
+		"test": "pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"Import-Module Pester ; Invoke-Pester -Path ./tests/*.ps1\"",
+		"build": "pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass \"./.build.ps1\"",
+		"start": "pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass \"./podex.ps1\""
 	},
 	"dependencies": {
 		"htmx-ext-client-side-templates": "^2.0.0",
@@ -31,9 +31,9 @@
 		"tailwindcss": "^3.4.13"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.11.1",
+		"@eslint/js": "^9.12.0",
 		"eslint": "^9.11.1",
-		"globals": "^15.9.0",
+		"globals": "^15.10.0",
 		"prettier": "^3.3.3",
 		"prettier-plugin-sql": "^0.18.1",
 		"prettier-plugin-tailwindcss": "^0.6.8"

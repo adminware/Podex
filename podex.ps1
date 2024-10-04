@@ -70,11 +70,11 @@ Start-PodeServer -Name 'Podex' -Threads 5 -ScriptBlock {
 
 	# front-end routes
 	Add-PodeRoute -Path '/' -Method Get, Post -ScriptBlock { Write-PodeViewResponse -Path 'layouts/main' -Data @{ PageName = 'Home'; Title = 'Podex - PowerShell/Pode + htmx Framework for Building Web Applications'; Components = @('about'); } }
-	Add-PodeRoute -Path '/crudmgr'	-Method Get, Post -ScriptBlock { Write-PodeViewResponse -Path 'layouts/main' -Data @{ PageName = 'CRUD'; Title = 'Podex - CRUD Management Demo'; Components = @('crudmgr'); } }
+	Add-PodeRoute -Path '/crudmgr'	-Method Get, Post -ScriptBlock { Write-PodeViewResponse -Path 'layouts/main' -Data @{ PageName = 'CRUDMgr'; Title = 'Podex - CRUD Management Demo'; Components = @('crudmgr'); } }
 
 	# htmx routes (html only)
 	Add-PodeRoute -Path '/htmx/hello' -Method Get -FilePath './htmx/hello.ps1'
-	Add-PodeRoute -Path '/htmx/crud-new' -Method Get -ScriptBlock { Write-PodeViewResponse -Path 'layouts/bare' -Data @{ Components = @('crud-new'); } }
+	Add-PodeRoute -Path '/htmx/crudmgr-new' -Method Get -ScriptBlock { Write-PodeViewResponse -Path 'layouts/bare' -Data @{ Components = @('crud-new'); } }
 
 	# file-based api routes (json or html)
 	foreach ($file in (Get-ChildItem -Path './api' -Filter *.ps1 -Recurse -File)) {
