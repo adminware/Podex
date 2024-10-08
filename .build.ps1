@@ -7,7 +7,8 @@ Install-Module -Name Pester -Verbose # Apache 2.0
 Install-Module -Name PSScriptAnalyzer -Verbose # MIT
 
 '# required npm packages'
-npm install htmx.org@next htmx-ext-client-side-templates htmx-ext-debug htmx-ext-json-enc mustache tailwindcss
+npm install htmx.org@next htmx-ext-client-side-templates htmx-ext-debug htmx-ext-json-enc mustache
+npm install tailwindcss @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio
 
 '# development npm packages'
 npm install -D eslint globals @eslint/js prettier prettier-plugin-tailwindcss prettier-plugin-sql
