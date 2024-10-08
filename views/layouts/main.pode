@@ -18,6 +18,6 @@
 		<div class="flex-grow overflow-auto">
 			<main class="mx-auto max-w-screen-lg p-6">$(foreach($component in $data.Components) { Use-PodePartialView -Path "components/$component" } ;)</main>
 		</div>
-		$(Use-PodePartialView -Path 'partials/footer' ;)
+		<div>$(Use-PodePartialView -Path 'partials/footer' ;)</div>
 	</body>
 </html>
