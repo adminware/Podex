@@ -8,10 +8,11 @@
 		<title>$($data.status.code ;) Error</title>
 		<link rel="stylesheet" type="text/css" href="/public/css/output.css" />
 		<link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg" />
-		<script src="/public/js/htmx.min.js"></script>
+		<script src="/public/js/htmx.js"></script>
+		<script src="/public/js/debug.js"></script>
 		<script src="/public/js/client-side-templates.js"></script>
 		<script src="/public/js/json-enc.js"></script>
-		<script src="/public/js/mustache.min.js"></script>
+		<script src="/public/js/mustache.js"></script>
 	</head>
 	<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200" hx-boost="true">
 		$(Use-PodePartialView -Path 'partials/header' -Data @{ PageName = '$($data.status.code ;) Error' } ;)
