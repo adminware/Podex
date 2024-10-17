@@ -1,9 +1,11 @@
 {
 
 	$isHTMX = $($WebEvent.Request.Headers.'HX-Request')
+	$isJsonEnc = $($WebEvent.Request.Headers.'Content-Type') -eq 'application/json'
+
 	$db = (Get-PodeConfig).Podex.DBFile
 
-	Write-FormattedLog -tag 'api' -log "CRUD API: $($WebEvent.Method.ToUpper()) $($WebEvent.Path) `$isHTMX:$($isHTMX) Q: $($WebEvent.Query | ConvertTo-Json -Compress)"
+	Write-FormattedLog -tag 'api' -log "Items API: $($WebEvent.Method.ToUpper()) $($WebEvent.Path) `$isHTMX:$($isHTMX) Q: $($WebEvent.Query | ConvertTo-Json -Compress)"
 
 	try {
 		$tagFilter = $WebEvent.Query['tagFilter']
@@ -43,9 +45,7 @@
 
 		# Write-FormattedLog -tag 'database' -log "db: $($db); sqlx: $($sqlx); tagFilter: $tagFilter; search: $search; params: $($params | ConvertTo-Json -Compress)"
 		$rs = (Invoke-SqliteQuery -DataSource $db -Query $sqlx -SqlParameters $params -As PSObject)
-
-		# Write-FormattedLog -tag 'database' -log "db: $($db); countSqlx: $($countSqlx); tagFilter: $tagFilter; search: $search; params: $($params | ConvertTo-Json -Compress)"
-		$totalItems = (Invoke-SqliteQuery -DataSource $db -Query $countSqlx -SqlParameters $params -As PSObject).count
+		$totalItems = $rs.Count
 
 		$tags = (Invoke-SqliteQuery -DataSource $db -Query "select [tag], case when [tag] = '$($tagFilter)' then 'selected' else '' end as [selected] from [tag] order by [tag] asc ;" -As PSObject)
 
@@ -54,7 +54,6 @@
 		$totalPages = [Math]::Ceiling($totalItems / $pageSize)
 		$hasPreviousPage = $page -gt 1
 		$hasNextPage = $page -lt $totalPages
-
 		$pages = @()
 		for ($i = 1; $i -le $totalPages; $i++) {
 			$pages += @{
@@ -64,7 +63,7 @@
 		}
 
 		$response = @{
-			features = $rs
+			rows = $rs
 			tags = $tags
 			startIndex = $startIndex
 			endIndex = $endIndex
@@ -77,23 +76,29 @@
 			currentPage = $page
 		}
 
-		# Write-FormattedLog -tag 'debug' -log ($response | ConvertTo-Json -Depth 5 -Compress) -save $true
+		Write-FormattedLog -tag 'debug' -log ($response | ConvertTo-Json -Depth 5 -Compress)
+		if ((Get-PodeConfig).Podex.Debug) {
+			New-Item -Name "$($WebEvent.Method).json" -Path $PSScriptRoot -ItemType File -Value ($response | ConvertTo-Json -Depth 5) -Force
+		}
 
-		if ($isHTMX) {
-			Write-FormattedLog -tag 'debug' -log "CRUDs found: $($rs.Count)"
-			$response | ConvertTo-Json -Depth 5 | Write-PodeJsonResponse -StatusCode 200
-		} else {
-			if ($response.features) {
-				Write-FormattedLog -tag 'debug' -log "CRUDs found: $($rs.Count)"
+		if ($response.rows) {
+			Write-FormattedLog -tag 'debug' -log "Items found: $($totalItems)"
+			if ($isJsonEnc) {
 				$response | ConvertTo-Json -Depth 5 | Write-PodeJsonResponse -StatusCode 200
 			} else {
-				Write-FormattedLog -tag 'debug' -log "No features found"
-				Write-PodeJsonResponse -StatusCode 204 -Value @{ message = "No features found" }
+				$response | Write-PodeHtmlResponse -StatusCode 200
+			}
+		} else {
+			Write-FormattedLog -tag 'debug' -log "No items found"
+			if ($isJsonEnc) {
+				Write-PodeJsonResponse -StatusCode 204 -Value @{ message = "No items found" }
+			} else {
+				Write-PodeHtmlResponse -StatusCode 204 -Value @{ message = "No items found" }
 			}
 		}
 
 	} catch {
-		Write-FormattedLog -tag 'error' -log "Error retrieving features: $_"
+		Write-FormattedLog -tag 'error' -log "Error retrieving items: $($_.Exception.Message)"
 		Write-PodeJsonResponse -StatusCode 500 -Value @{ message = "Internal server error" }
 	}
 

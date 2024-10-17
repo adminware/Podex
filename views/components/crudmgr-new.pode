@@ -13,7 +13,7 @@
 			</svg>
 		</button>
 	</div>
-	<form hx-post="/api/crud" hx-swap="none" hx-on::after-request="this.reset(); htmx.trigger('body', 'crudChanged')">
+	<form hx-post="/api/crud" hx-swap="none" hx-on::after-request="this.reset(); htmx.trigger('body', 'itemChanged')">
 		<div class="space-y-6 p-6">
 			<div>
 				<label for="item" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Item Name</label>
@@ -26,7 +26,7 @@
 					required />
 			</div>
 			<div>
-				<label for="crudText" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Item Description</label>
+				<label for="description" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Item Description</label>
 				<textarea
 					name="description"
 					id="description"
@@ -38,14 +38,14 @@
 		<div class="flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
 			<button
 				type="submit"
-				hx-on:click="htmx.trigger('body', 'crudChanged'); htmx.trigger('body', 'closeModal')"
+				hx-on:click="htmx.trigger('body', 'itemChanged'); htmx.trigger('body', 'closeModal')"
 				class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 				Add Item
 			</button>
 			<button
 				type="button"
 				class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
-				hx-on:click="htmx.trigger('body', 'crudChanged'); htmx.trigger('body', 'closeModal')">
+				hx-on:click="htmx.trigger('body', 'itemChanged'); htmx.trigger('body', 'closeModal')">
 				Cancel
 			</button>
 		</div>
