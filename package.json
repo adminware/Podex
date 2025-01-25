@@ -24,20 +24,21 @@
 	},
 	"dependencies": {
 		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@tailwindcss/cli": "^4.0.0",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"htmx-ext-client-side-templates": "^2.0.0",
 		"htmx-ext-debug": "^2.0.0",
 		"htmx-ext-json-enc": "^2.0.1",
-		"htmx.org": "^2.0.3",
+		"htmx.org": "^2.0.4",
 		"mustache": "^4.2.0",
 		"tailwindcss": "^4.0.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.12.0",
-		"eslint": "^9.12.0",
-		"globals": "^15.11.0",
-		"prettier": "^3.3.3",
+		"@eslint/js": "^9.19.0",
+		"eslint": "^9.19.0",
+		"globals": "^15.14.0",
+		"prettier": "^3.4.2",
 		"prettier-plugin-sql": "^0.18.1",
 		"prettier-plugin-tailwindcss": "^0.6.11"
 	}

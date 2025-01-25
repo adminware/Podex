@@ -1,12 +1,12 @@
 <!-- Item Management -->
-<section class="bg-gray-50 p-3 dark:bg-gray-900 sm:p-5">
-	<div class="flex items-center px-2 text-gray-500 dark:text-gray-400 sm:text-lg lg:px-3">
+<section class="bg-gray-50 p-3 sm:p-5 dark:bg-gray-900">
+	<div class="flex items-center px-2 text-gray-500 sm:text-lg lg:px-3 dark:text-gray-400">
 		<h2 class="mb-4 text-2xl font-bold">Item Management</h2>
 	</div>
 	<div class="mx-auto max-w-(--breakpoint-xl)">
 		<!-- Item Content -->
 		<div
-			class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg"
+			class="relative overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-gray-800"
 			id="crud"
 			hx-trigger="load, itemChanged from:body"
 			hx-get="/api/crud"
@@ -182,7 +182,7 @@
 </script>
 
 <!-- Item Modal -->
-<div id="itemModal" class="fixed inset-0 z-50 hidden items-center justify-center overflow-auto bg-black bg-opacity-50">
+<div id="itemModal" class="bg-opacity-50 fixed inset-0 z-50 hidden items-center justify-center overflow-auto bg-black">
 	<div id="itemModalContent" class="relative rounded-lg bg-white shadow-sm dark:bg-gray-700">
 		<!-- Modal content will be loaded here -->
 	</div>

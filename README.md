@@ -2,13 +2,13 @@
 
 ### Table of Contents
 
--   [Introduction](#introduction)
--   [Features](#features)
--   [Technical Stack](#technical-stack)
--   [Setup](#setup)
--   [Running the Project](#running-the-project)
--   [Contributing](#contributing)
--   [License](#license)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technical Stack](#technical-stack)
+- [Setup](#setup)
+- [Running the Project](#running-the-project)
+- [Contributing](#contributing)
+- [License](#license)
 
 ### Introduction
 
@@ -16,8 +16,8 @@ Podex is a framework for building full-stack web applications using PowerShell/P
 
 ### Technical Stack
 
--   **Backend**: [PowerShell Core](https://github.com/PowerShell/PowerShell), [Pode](https://github.com/Badgerati/Pode), [SQLite](https://www.sqlite.org/index.html)
--   **Frontend**: [htmx](https://htmx.org/), [Mustache](https://mustache.github.io/), [Tailwind CSS](https://tailwindcss.com/)
+- **Backend**: [PowerShell Core](https://github.com/PowerShell/PowerShell), [Pode](https://github.com/Badgerati/Pode), [SQLite](https://www.sqlite.org/index.html)
+- **Frontend**: [htmx](https://htmx.org/), [Mustache](https://mustache.github.io/), [Tailwind CSS](https://tailwindcss.com/)
 
 ### Setup
 
