@@ -17,7 +17,7 @@
 	<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200" hx-boost="true">
 		$(Use-PodePartialView -Path 'partials/header' -Data @{ PageName = '404 Not Found' } ;)
 
-		<main class="container mx-auto max-w-screen-xl p-2 lg:px-3 lg:py-4">
+		<main class="container mx-auto max-w-(--breakpoint-xl) p-2 lg:px-3 lg:py-4">
 			<h1>404 Not Found</h1>
 			<div class="bg-white text-left text-sm text-black">
 				<p>Render Time: $([DateTime]::Now.ToString('yyyy-MM-dd HH:mm:ss') ;)</p>

@@ -1,5 +1,5 @@
 <footer>
-	<div class="mx-auto w-full bg-white bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-3 text-center shadow dark:bg-gray-800">
+	<div class="mx-auto w-full bg-white bg-linear-to-r from-blue-500 to-purple-500 px-4 py-3 text-center shadow-sm dark:bg-gray-800">
 		<div>
 			Download the <span class="text-white">htmx-debugger</span> extension for
 			<a href="https://addons.mozilla.org/en-US/firefox/addon/htmx-debugger" class="text-yellow-400 hover:underline">Firefox</a> or
