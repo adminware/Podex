@@ -18,7 +18,7 @@ export default [
 				sourceType: 'module',
 			},
 		},
-		ignores: ['public/js/*', 'node_modules/*'],
+		ignores: ['public/js/*', 'node_modules/*', 'logs/*', '.vscode/*'],
 		rules: {},
 	},
 	pluginJs.configs.recommended,
