@@ -4,17 +4,17 @@ Import-Module -Name 'Pode' -MaximumVersion 2.99.99 -Force
 function Write-FormattedLog {
 	param([string]$tag, [string]$log, [switch]$save)
 	switch ($tag) {
-		'debug'		{ $icon = "🐞" }
-		'database'	{ $icon = "💾" }
-		'api'		{ $icon = "🔗" }
-		'informational' { $icon = "ℹ️" }
-		'verbose'	{ $icon = "🔍" }
-		'warning'	{ $icon = "⚠️" }
-		'error'		{ $icon = "❌" }
-		default		{ $icon = "✅" }
+		'debug' { $icon = '🐞' }
+		'database'	{ $icon = '💾' }
+		'api' { $icon = '🔗' }
+		'informational' { $icon = 'ℹ️' }
+		'verbose'	{ $icon = '🔍' }
+		'warning'	{ $icon = '⚠️' }
+		'error' { $icon = '❌' }
+		default { $icon = '✅' }
 	}
-	$timestamp = Get-Date -Format "yyyyMMddHHmmss"
-	$prefix = "{0} {1} {2} " -f $timestamp, $tag.PadRight(11), $icon
+	$timestamp = Get-Date -Format 'yyyyMMddHHmmss'
+	$prefix = '{0} {1} {2} ' -f $timestamp, $tag.PadRight(11), $icon
 	Write-PodeHost $prefix -NoNewLine
 	$maxLineLength = [int]($Host.UI.RawUI.WindowSize.Width - $prefix.Length - 1)
 	$currentPosition = 0
@@ -44,6 +44,7 @@ function Remove-UnsafeCharacter {
 	return $inputString
 }
 
+# Start-PodeServer -Name 'Podex' -ConfigFile '.\podex.psd1' -Threads 5 -ScriptBlock {
 Start-PodeServer -Name 'Podex' -Threads 5 -ScriptBlock {
 
 	# get config
@@ -78,13 +79,13 @@ Start-PodeServer -Name 'Podex' -Threads 5 -ScriptBlock {
 
 	# file-based api routes (json or html)
 	foreach ($file in (Get-ChildItem -Path './api' -Filter *.ps1 -Recurse -File)) {
-		$method = (Get-Culture).TextInfo.ToTitleCase($file.Name) -replace "\.ps1$", ''
-		$relativePath = $file.FullName -replace [regex]::Escape($PWD.Path + "\"), "" -replace "\\", "/"
-		$apiPath = "/" + ($relativePath -replace "\.ps1$", "")
+		$method = (Get-Culture).TextInfo.ToTitleCase($file.Name) -replace '\.ps1$', ''
+		$relativePath = $file.FullName -replace [regex]::Escape($PWD.Path + '\'), '' -replace '\\', '/'
+		$apiPath = '/' + ($relativePath -replace '\.ps1$', '')
 		if ($method -in @('Get', 'Post', 'Put', 'Delete')) {
-			$apiPath = $apiPath -replace "/$($method)", ""
-		} elseif ($cfg.Podex.Debug -and $relativePath -match "/debug/") {
-			$apiPath = $apiPath -replace "/debug", ""
+			$apiPath = $apiPath -replace "/$($method)", ''
+		} elseif ($cfg.Podex.Debug -and $relativePath -match '/debug/') {
+			$apiPath = $apiPath -replace '/debug', ''
 			$method = 'Get'
 		} else {
 			$method = 'Get'
