@@ -9,7 +9,4 @@ package-lock.json
 .vscode/
 podex.db
 public/css/output.css
-public/js/client-side-templates.js
-public/js/htmx.min.js
-public/js/json-enc.js
-public/js/mustache.min.js
+public/js/

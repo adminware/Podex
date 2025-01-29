@@ -1,17 +1,16 @@
 '# required powershell modules'
-Install-Module -Name PSSQLite -MinimumVersion 1.1.0 -MaximumVersion 1.99.99 -Verbose # MIT
-Install-Module -Name Pode -MinimumVersion 2.11.0 -MaximumVersion 2.99.99 -Verbose # MIT
+# Install-Module -Name PSSQLite -MinimumVersion 1.1.0 -MaximumVersion 1.99.99 -Verbose # MIT
+Install-Module -Name Pode -MinimumVersion 2.11.1 -MaximumVersion 2.99.99 -Verbose # MIT
 
 '# development powershell modules'
 Install-Module -Name Pester -MinimumVersion 5.6.1 -MaximumVersion 5.99.99 -Verbose # Apache 2.0
 Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.23.0 -MaximumVersion 1.99.99 -Verbose # MIT
 
 '# required npm packages'
-npm install htmx.org@next htmx-ext-client-side-templates htmx-ext-debug htmx-ext-json-enc mustache
-npm install tailwindcss @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio
+npm install htmx.org@next htmx-ext-client-side-templates htmx-ext-debug htmx-ext-json-enc mustache tailwindcss @tailwindcss/cli
 
 '# development npm packages'
-npm install -D eslint globals htmx-ext-debug @eslint/js prettier prettier-plugin-tailwindcss prettier-plugin-sql
+npm install -D eslint globals @eslint/js prettier prettier-plugin-tailwindcss prettier-plugin-sql
 
 '# update packages'
 npm update
@@ -34,8 +33,8 @@ Copy-Item -Path './node_modules/mustache/mustache.min.js' -Destination './public
 '# initialize database'
 $db = './podex.db'
 if ((Test-Path -Path $db)) {
-	$confirm = Read-Host "Do you want to reinitialize the database? (y/N)"
-	if ($confirm -eq "y") {
+	$confirm = Read-Host 'Do you want to reinitialize the database? (y/N)'
+	if ($confirm -eq 'y') {
 		Invoke-SqliteQuery -DataSource $db -Query (Get-Content -Path './api/debug/init.sql' -Raw) -Verbose
 	}
 }

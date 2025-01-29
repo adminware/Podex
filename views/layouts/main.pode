@@ -16,8 +16,8 @@
 	</head>
 	<body class="flex min-h-screen flex-col bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200" hx-boost="true">
 		<div>$(Use-PodePartialView -Path 'partials/header' -Data @{ PageName = $data.PageName } ;)</div>
-		<div class="flex-grow overflow-auto">
-			<main class="mx-auto max-w-screen-lg p-6">$(foreach($component in $data.Components) { Use-PodePartialView -Path "components/$component" } ;)</main>
+		<div class="grow overflow-auto">
+			<main class="mx-auto max-w-(--breakpoint-lg) p-6">$(foreach($component in $data.Components) { Use-PodePartialView -Path "components/$component" } ;)</main>
 		</div>
 		<div>$(Use-PodePartialView -Path 'partials/footer' ;)</div>
 	</body>

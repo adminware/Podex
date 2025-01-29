@@ -1,9 +1,9 @@
-<section class="bg-gray-50 p-3 dark:bg-gray-900 sm:p-5">
-	<div class="px-2 text-gray-500 dark:text-gray-400 sm:text-lg lg:px-3">
+<section class="bg-gray-50 p-3 sm:p-5 dark:bg-gray-900">
+	<div class="px-2 text-gray-500 sm:text-lg lg:px-3 dark:text-gray-400">
 		<h2 class="mb-4 text-2xl font-bold">Podex - PowerShell/Pode + htmx Framework for Building Web Applications</h2>
 	</div>
-	<div class="mx-auto max-w-screen-xl px-2 py-4 lg:px-3 lg:py-8">
-		<div class="text-gray-500 dark:text-gray-400 sm:text-lg">
+	<div class="mx-auto max-w-(--breakpoint-xl) px-2 py-4 lg:px-3 lg:py-8">
+		<div class="text-gray-500 sm:text-lg dark:text-gray-400">
 			<h2>Podex - PowerShell/Pode + htmx Framework for Building Web Applications</h2>
 			<h3>Table of Contents</h3>
 			<ul>

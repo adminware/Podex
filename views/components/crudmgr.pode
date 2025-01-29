@@ -1,12 +1,12 @@
 <!-- Item Management -->
-<section class="bg-gray-50 p-3 dark:bg-gray-900 sm:p-5">
-	<div class="flex items-center px-2 text-gray-500 dark:text-gray-400 sm:text-lg lg:px-3">
+<section class="bg-gray-50 p-3 sm:p-5 dark:bg-gray-900">
+	<div class="flex items-center px-2 text-gray-500 sm:text-lg lg:px-3 dark:text-gray-400">
 		<h2 class="mb-4 text-2xl font-bold">Item Management</h2>
 	</div>
-	<div class="mx-auto max-w-screen-xl">
+	<div class="mx-auto max-w-(--breakpoint-xl)">
 		<!-- Item Content -->
 		<div
-			class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg"
+			class="relative overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-gray-800"
 			id="crud"
 			hx-trigger="load, itemChanged from:body"
 			hx-get="/api/crud"
@@ -54,12 +54,12 @@
 				</div>
 			</form>
 		</div>
-		<div class="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0">
+		<div class="flex w-full shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0">
 			<button
 				hx-ext="ignore:client-side-templates"
 				type="button"
 				id="addItemBtn"
-				class="flex items-center justify-center rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+				class="flex items-center justify-center rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-hidden focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 				hx-get="/htmx/item-new"
 				hx-target="#itemModalContent"
 				hx-trigger="click"
@@ -72,7 +72,7 @@
 			<div class="flex w-full items-center space-x-3 md:w-auto">
 				<select
 					id="tagFilter"
-					class="block w-full appearance-none rounded border bg-gray-400 px-4 py-2 text-sm font-medium leading-tight text-gray-700 focus:border-gray-500 focus:bg-gray-200 focus:outline-none"
+					class="block w-full appearance-none rounded-sm border bg-gray-400 px-4 py-2 text-sm font-medium leading-tight text-gray-700 focus:border-gray-500 focus:bg-gray-200 focus:outline-hidden"
 					name="tagFilter"
 					hx-trigger="change"
 					hx-get="/api/crud"
@@ -107,7 +107,7 @@
 					<td class="px-4 py-3 align-top"><input type="hidden" name="description" value="{{description}}" required />{{description}}</td>
 					<td class="px-4 py-3 align-top whitespace-nowrap">{{created_at}}</td>
 					<td class="flex items-start justify-end px-4 py-3">
-						<button class="mr-2 rounded bg-yellow-500 px-2 py-1 font-bold text-white hover:bg-yellow-700"
+						<button class="mr-2 rounded-sm bg-yellow-500 px-2 py-1 font-bold text-white hover:bg-yellow-700"
 							hx-put="/api/crud"
 							hx-include="closest tr"
 							hx-params="*"
@@ -115,7 +115,7 @@
 							hx-on::after-request="htmx.trigger('body', 'itemChanged')">
 							Update
 						</button>
-						<button class="rounded bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-700"
+						<button class="rounded-sm bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-700"
 							hx-delete="/api/crud?id={{id}}"
 							hx-confirm="Are you sure you want to delete this item?"
 							hx-include="[name='search']"
@@ -182,8 +182,8 @@
 </script>
 
 <!-- Item Modal -->
-<div id="itemModal" class="fixed inset-0 z-50 hidden items-center justify-center overflow-auto bg-black bg-opacity-50">
-	<div id="itemModalContent" class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+<div id="itemModal" class="bg-opacity-50 fixed inset-0 z-50 hidden items-center justify-center overflow-auto bg-black">
+	<div id="itemModalContent" class="relative rounded-lg bg-white shadow-sm dark:bg-gray-700">
 		<!-- Modal content will be loaded here -->
 	</div>
 </div>
